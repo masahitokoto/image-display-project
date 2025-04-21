@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>定期的な画像表示</title>
+    <style>
+        #image-container {
+            text-align: center;
+            margin-top: 50px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="image-container">
+        <img id="displayed-image" src="image1.jpg" alt="定期的に表示される画像">
+    </div>
+    <script>
+        // 画像のURLリスト
+        const images = [
+            'image1.jpg',
+            'image2.jpg',
+            'image3.jpg'
+        ];
+
+        // 現在の画像インデックス
+        let currentImageIndex = 0;
+
+        // 画像を変更する関数
+        function changeImage() {
+            const imageElement = document.getElementById('displayed-image');
+            imageElement.src = images[currentImageIndex];
+            currentImageIndex = (currentImageIndex + 1) % images.length;
+        }
+
+        // 初回の画像変更
+        changeImage();
+
+        // 10秒ごとに画像を変更するタイマー設定
+        setInterval(changeImage, 10000); // 10000ミリ秒 = 10秒
+    </script>
+</body>
+</html>
